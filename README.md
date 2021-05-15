@@ -1,0 +1,42 @@
+# youtube_app
+apiとの連携やalamofireの練習がてらに作成したアプリです。
+
+# 学んだこと
+- Collection View Flow LayoutのEstimate SizeはNoneにできる
+- awakefornibはxib使うときにしか呼ばれない
+- xibはviewからつくれる
+- stackview、内部の要素の大きさに対して動的に変わってくれるのでマジ便利
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
