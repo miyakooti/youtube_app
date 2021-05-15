@@ -13,6 +13,8 @@
 		D15D391C264EBDFE00839AC0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D15D391A264EBDFE00839AC0 /* Main.storyboard */; };
 		D15D391E264EBDFF00839AC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D15D391D264EBDFF00839AC0 /* Assets.xcassets */; };
 		D15D3921264EBDFF00839AC0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D15D391F264EBDFF00839AC0 /* LaunchScreen.storyboard */; };
+		D15D392C264EC54E00839AC0 /* VideoListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15D392B264EC54E00839AC0 /* VideoListCell.swift */; };
+		D1911591264F7264009CBD97 /* VideoListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1911590264F7264009CBD97 /* VideoListCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		D15D391D264EBDFF00839AC0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D15D3920264EBDFF00839AC0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D15D3922264EBDFF00839AC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D15D392B264EC54E00839AC0 /* VideoListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoListCell.swift; sourceTree = "<group>"; };
+		D1911590264F7264009CBD97 /* VideoListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoListCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +60,9 @@
 		D15D3913264EBDFE00839AC0 /* youtube_app */ = {
 			isa = PBXGroup;
 			children = (
+				D15D392A264EC4FF00839AC0 /* Cells */,
 				D15D3914264EBDFE00839AC0 /* AppDelegate.swift */,
+				D1911593264F728A009CBD97 /* Views */,
 				D15D3916264EBDFE00839AC0 /* SceneDelegate.swift */,
 				D15D3918264EBDFE00839AC0 /* ViewController.swift */,
 				D15D391A264EBDFE00839AC0 /* Main.storyboard */,
@@ -65,6 +71,22 @@
 				D15D3922264EBDFF00839AC0 /* Info.plist */,
 			);
 			path = youtube_app;
+			sourceTree = "<group>";
+		};
+		D15D392A264EC4FF00839AC0 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				D15D392B264EC54E00839AC0 /* VideoListCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		D1911593264F728A009CBD97 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D1911590264F7264009CBD97 /* VideoListCell.xib */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,6 +147,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D15D3921264EBDFF00839AC0 /* LaunchScreen.storyboard in Resources */,
+				D1911591264F7264009CBD97 /* VideoListCell.xib in Resources */,
 				D15D391E264EBDFF00839AC0 /* Assets.xcassets in Resources */,
 				D15D391C264EBDFE00839AC0 /* Main.storyboard in Resources */,
 			);
@@ -138,6 +161,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D15D3919264EBDFE00839AC0 /* ViewController.swift in Sources */,
+				D15D392C264EC54E00839AC0 /* VideoListCell.swift in Sources */,
 				D15D3915264EBDFE00839AC0 /* AppDelegate.swift in Sources */,
 				D15D3917264EBDFE00839AC0 /* SceneDelegate.swift in Sources */,
 			);

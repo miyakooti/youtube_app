@@ -20,7 +20,8 @@ class ViewController: UIViewController {
         videoListCollectionView.delegate = self
         videoListCollectionView.dataSource = self
         
-        videoListCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
+        videoListCollectionView.register(VideoListCell.self, forCellWithReuseIdentifier: cellId)
+        videoListCollectionView.register(UINib(nibName: "VideoListCell", bundle: nil), forCellWithReuseIdentifier: cellId)
     }
 
 
@@ -34,7 +35,6 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = videoListCollectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
-        cell.backgroundColor = .green
         return cell
     }
     
@@ -45,7 +45,8 @@ extension ViewController: UICollectionViewDelegateFlowLayout { // セルのレ�
  
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = self.view.frame.width
-        return .init(width: width, height: width) //正方形やんけ
+        print(width)
+        return .init(width: width, height: 373) //正方形やんけ
     }
     
 }
