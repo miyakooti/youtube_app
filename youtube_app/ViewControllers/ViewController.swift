@@ -12,6 +12,8 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var videoListCollectionView: UICollectionView!
     
+    private let apiKey = "ここにapiキーを入力してください"
+    
     private let cellId = "cellId"
     private var videoItems = [Item]()
     
@@ -26,7 +28,7 @@ class ViewController: UIViewController {
         videoListCollectionView.register(UINib(nibName: "VideoListCell", bundle: nil), forCellWithReuseIdentifier: cellId)
         
         // ここからが本番
-        let urlString = "https://www.googleapis.com/youtube/v3/search?q=apexlegends&key=AIzaSyBeKZ7M-SRhSNN2jFIiJhIHwHdWllTfTnk&part=snippet"
+        let urlString = "https://www.googleapis.com/youtube/v3/search?q=apexlegends&key=\(apiKey)&part=snippet"
         
         let request = AF.request(urlString)
         request.responseJSON { (response) in            
