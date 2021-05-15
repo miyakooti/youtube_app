@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class ViewController: UIViewController {
 
@@ -22,6 +23,25 @@ class ViewController: UIViewController {
         
         videoListCollectionView.register(VideoListCell.self, forCellWithReuseIdentifier: cellId)
         videoListCollectionView.register(UINib(nibName: "VideoListCell", bundle: nil), forCellWithReuseIdentifier: cellId)
+        
+        // ここからが本番
+        let urlString = "https://www.googleapis.com/youtube/v3/search?q=apexlegends&key=AIzaSyBeKZ7M-SRhSNN2jFIiJhIHwHdWllTfTnk&part=snippet"
+        
+        let request = AF.request(urlString)
+        request.responseJSON { (response) in
+//            print("responce", response)
+            
+            
+            do {
+                guard let data = response.data else { return }
+                let decoder = JSONDecoder()
+                let video = try decoder.decode(Video.self, from: data) //モデルに格納できるんだ、、、すげー、、、
+                print("video:", video.items.count)
+            } catch {
+                print("jsonのデコードに失敗しました：", error)
+            }
+        }
+        
     }
 
 
@@ -45,7 +65,6 @@ extension ViewController: UICollectionViewDelegateFlowLayout { // セルのレ�
  
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = self.view.frame.width
-        print(width)
         return .init(width: width, height: 373) //正方形やんけ
     }
     
