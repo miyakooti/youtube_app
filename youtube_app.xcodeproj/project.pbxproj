@@ -65,6 +65,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		D1259880264FBB7900B7AEBA /* Xibs */ = {
+			isa = PBXGroup;
+			children = (
+				D1911590264F7264009CBD97 /* VideoListCell.xib */,
+			);
+			path = Xibs;
+			sourceTree = "<group>";
+		};
 		D15D3908264EBDFE00839AC0 = {
 			isa = PBXGroup;
 			children = (
@@ -86,16 +94,16 @@
 		D15D3913264EBDFE00839AC0 /* youtube_app */ = {
 			isa = PBXGroup;
 			children = (
-				D15D392A264EC4FF00839AC0 /* Cells */,
 				D15D3914264EBDFE00839AC0 /* AppDelegate.swift */,
-				D1911593264F728A009CBD97 /* Views */,
 				D15D3916264EBDFE00839AC0 /* SceneDelegate.swift */,
-				D15D3918264EBDFE00839AC0 /* ViewController.swift */,
-				D125987B264FA87100B7AEBA /* Models */,
 				D15D391A264EBDFE00839AC0 /* Main.storyboard */,
 				D15D391D264EBDFF00839AC0 /* Assets.xcassets */,
 				D15D391F264EBDFF00839AC0 /* LaunchScreen.storyboard */,
 				D15D3922264EBDFF00839AC0 /* Info.plist */,
+				D125987B264FA87100B7AEBA /* Models */,
+				D1911593264F728A009CBD97 /* ViewControllers */,
+				D15D392A264EC4FF00839AC0 /* Cells */,
+				D1259880264FBB7900B7AEBA /* Xibs */,
 			);
 			path = youtube_app;
 			sourceTree = "<group>";
@@ -108,12 +116,12 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		D1911593264F728A009CBD97 /* Views */ = {
+		D1911593264F728A009CBD97 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				D1911590264F7264009CBD97 /* VideoListCell.xib */,
+				D15D3918264EBDFE00839AC0 /* ViewController.swift */,
 			);
-			path = Views;
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		D210D78A6E7D1AD79A65D25C /* Frameworks */ = {

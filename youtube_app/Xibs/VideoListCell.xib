@@ -19,7 +19,7 @@
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0AV-Kd-Y7a">
                         <rect key="frame" x="0.0" y="15" width="397" height="280"/>
-                        <color key="backgroundColor" systemColor="linkColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="280" id="BeU-c5-1ma"/>
                         </constraints>
@@ -50,6 +50,7 @@
                         </subviews>
                     </stackView>
                 </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="CMv-j3-yKh" secondAttribute="trailing" constant="10" id="Abf-dY-bYm"/>
                     <constraint firstItem="CMv-j3-yKh" firstAttribute="top" secondItem="0AV-Kd-Y7a" secondAttribute="bottom" constant="10" id="ChD-wD-CqF"/>
@@ -61,17 +62,18 @@
                     <constraint firstAttribute="trailing" secondItem="0AV-Kd-Y7a" secondAttribute="trailing" id="tbD-Ze-r6B"/>
                 </constraints>
             </collectionViewCellContentView>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <size key="customSize" width="397" height="373"/>
             <connections>
                 <outlet property="channelImageView" destination="J7S-Fa-SrY" id="Rc7-6D-U4i"/>
+                <outlet property="descriptionLabel" destination="pnp-I8-g8B" id="RXo-jf-UGs"/>
+                <outlet property="thumbnailImageView" destination="0AV-Kd-Y7a" id="oSQ-kF-PSE"/>
+                <outlet property="titleLabel" destination="eVH-I3-Ule" id="CJw-Ge-DTX"/>
             </connections>
             <point key="canvasLocation" x="302.17391304347831" y="76.004464285714278"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <systemColor name="linkColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
