@@ -11,9 +11,7 @@ import Alamofire
 class ViewController: UIViewController {
 
     @IBOutlet weak var videoListCollectionView: UICollectionView!
-    
-    private let apiKey = "AIzaSyBeKZ7M-SRhSNN2jFIiJhIHwHdWllTfTnk"
-    
+        
     private let cellId = "cellId"
     private var videoItems = [Item]()
     
@@ -24,11 +22,10 @@ class ViewController: UIViewController {
         videoListCollectionView.delegate = self
         videoListCollectionView.dataSource = self
         
-        videoListCollectionView.register(VideoListCell.self, forCellWithReuseIdentifier: cellId)
-        videoListCollectionView.register(UINib(nibName: "VideoListCell", bundle: nil), forCellWithReuseIdentifier: cellId)
+        videoListCollectionView.register(VideoListCell.nib(), forCellWithReuseIdentifier: VideoListCell.identifier)
         
         // ここからが本番
-        let urlString = "https://www.googleapis.com/youtube/v3/search?q=apexlegends&key=\(apiKey)&part=snippet"
+        let urlString = "https://www.googleapis.com/youtube/v3/search?q=apexlegends&key=\(Sensitive.apiKey)&part=snippet"
         
         let request = AF.request(urlString)
         request.responseJSON { (response) in            
@@ -56,7 +53,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     //セルの内容
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = videoListCollectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! VideoListCell
+        let cell = videoListCollectionView.dequeueReusableCell(withReuseIdentifier: VideoListCell.identifier, for: indexPath) as! VideoListCell
         cell.videoItem = videoItems[indexPath.row]
         return cell
     }

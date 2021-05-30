@@ -9,14 +9,13 @@ import UIKit
 
 class VideoListCell: UICollectionViewCell {
     
-//    override init(frame: CGRect) {
-//        super.init(frame: frame)
-//        backgroundColor = .black
-//    }
-//
-//    required init?(coder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
+    static let identifier = "VideoListCellId"
+    static func nib() -> UINib {
+        return UINib(nibName: "VideoListCell", bundle: nil)
+    }
+    
+    
+    
     var videoItem: Item? {
         didSet{
             guard let url = URL(string: videoItem?.snippet.thumbnails.medium.url ?? "") else { return }
