@@ -1,6 +1,30 @@
 # youtube_app
 apiとの連携やalamofireの練習がてらに作成したアプリです。
 
+# 実行方法
+Sensitive.swiftというファイルは、APIキーなどの隠す必要がある文字列などを格納する構造体が定義されます。
+.gitignoreで無視しているので、ファイル名を右クリックしてSensitive.swiftを作成して、次のように定義をしてください。
+
+<img width="262" alt="スクリーンショット 2021-05-30 23 32 41" src="https://user-images.githubusercontent.com/60727025/120108256-55e58c80-c19f-11eb-872c-5f234e5c80d0.png">
+
+~~~
+import Foundation
+
+struct Sensitive {
+    static var apiKey: String {
+        return "ここにalamofireのapiキーを入力してください。"
+    }
+}
+~~~
+
+次にワークスペースに移動して、ターミナルで次のコマンドを入力してください。
+
+~~~
+pod install
+~~~
+　これでビルドができるはずです。
+
+
 # 学んだこと
 - Collection View Flow LayoutのEstimate SizeはNoneにできる
 - awakefornibはxib使うときにしか呼ばれない
@@ -26,6 +50,8 @@ apiとの連携やalamofireの練習がてらに作成したアプリです。
 - とにかくapiを利用したアプリを作ってみたい。google検索apiとかあったら、電車の時間を返すアプリとか面白そう。
 - 
 
+# 参考文献
+[キャッシュ削除](https://qiita.com/fuwamaki/items/3ed021163e50beab7154)
 
 
 
