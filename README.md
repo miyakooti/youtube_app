@@ -50,6 +50,8 @@ pod install
 - とにかくapiを利用したアプリを作ってみたい。google検索apiとかあったら、電車の時間を返すアプリとか面白そう。
 - 
 
+# 参考文献
+[キャッシュ削除](https://qiita.com/fuwamaki/items/3ed021163e50beab7154)
 
 
 
