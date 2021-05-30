@@ -12,7 +12,7 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var videoListCollectionView: UICollectionView!
     
-    private let apiKey = "ここにapiキーを入力してください"
+    private let apiKey = "AIzaSyBeKZ7M-SRhSNN2jFIiJhIHwHdWllTfTnk"
     
     private let cellId = "cellId"
     private var videoItems = [Item]()
