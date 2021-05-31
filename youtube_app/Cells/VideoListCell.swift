@@ -26,8 +26,6 @@ class VideoListCell: UICollectionViewCell {
                     print("データからUIImageに変換できませんでした", error)
                 }
 
-            
-
             titleLabel.text = videoItem?.snippet.title
             descriptionLabel.text = videoItem?.snippet.description
         }

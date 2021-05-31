@@ -33,6 +33,33 @@ class ViewController: UIViewController {
         let urlString = "https://www.googleapis.com/youtube/v3/search?q=apexlegends&key=\(Sensitive.apiKey)&part=snippet"
         
         let request = AF.request(urlString)
+        request.responseJSON { [self] (response) in
+            
+            do {
+                guard let data = response.data else { return }
+                let decoder = JSONDecoder()
+                let video = try decoder.decode(Video.self, from: data) //モデルに格納できるんだ、、、すげー、、、
+                print("video:", video.items.count)
+                self.videoItems = video.items
+                
+                // search→channerで、チャンネルの情報を取得
+                
+                let id = self.videoItems[0].snippet.channelId
+                fetchYoutubeChannelInfo(id: id)
+    
+                self.videoListCollectionView.reloadData()
+            } catch {
+                print("jsonのデコードに失敗しました：", error)
+            }
+        }
+    }
+
+    
+    private func fetchYoutubeChannelInfo(id: String) {
+        // ここからが本番
+        let urlString = "https://www.googleapis.com/youtube/v3/channels?key=\(Sensitive.apiKey)&part=snippet&id=\(id)"
+        
+        let request = AF.request(urlString)
         request.responseJSON { (response) in
             
             do {
@@ -51,11 +78,12 @@ class ViewController: UIViewController {
             }
         }
     }
-    
 
 }
 
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
