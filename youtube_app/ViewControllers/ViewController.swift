@@ -31,6 +31,7 @@ class ViewController: UIViewController {
     private func fetchYoutubeSearchInfo() {
         // ここからが本番
         let urlString = "https://www.googleapis.com/youtube/v3/search?q=apexlegends&key=\(Sensitive.apiKey)&part=snippet"
+//        print(urlString)
         
         let request = AF.request(urlString)
         request.responseJSON { [self] (response) in
@@ -49,15 +50,15 @@ class ViewController: UIViewController {
     
                 self.videoListCollectionView.reloadData()
             } catch {
-                print("jsonのデコードに失敗しました：", error)
+                print("searchでデコードに失敗", error)
             }
         }
     }
 
-    
     private func fetchYoutubeChannelInfo(id: String) {
         // ここからが本番
         let urlString = "https://www.googleapis.com/youtube/v3/channels?key=\(Sensitive.apiKey)&part=snippet&id=\(id)"
+        print(urlString)
         
         let request = AF.request(urlString)
         request.responseJSON { (response) in
@@ -65,16 +66,15 @@ class ViewController: UIViewController {
             do {
                 guard let data = response.data else { return }
                 let decoder = JSONDecoder()
-                let video = try decoder.decode(Video.self, from: data) //モデルに格納できるんだ、、、すげー、、、
-                print("video:", video.items.count)
-                self.videoItems = video.items
+                let channel = try decoder.decode(Channel.self, from: data)
                 
+                self.videoItems.forEach { (item) in
+                    item.channel = channel
+                }
                 // search→channerで、チャンネルの情報を取得
-    
-                
                 self.videoListCollectionView.reloadData()
             } catch {
-                print("jsonのデコードに失敗しました：", error)
+                print("channelでデコードに失敗", error)
             }
         }
     }
@@ -82,9 +82,6 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    
-    
-    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return videoItems.count

@@ -7,6 +7,9 @@ class Video: Decodable { //jsonデータをデコードできる、という意�
 
 class Item: Decodable { // 逆にxcodeとかで書いたデータをjsonにしたいときは、codable（ユーザーアプリでやったやつ！）
     let snippet: Snippet
+    
+    // channelのアイコンの情報をあとづけする
+    var channel: Channel?
 }
 
 class Snippet: Decodable {
@@ -18,7 +21,7 @@ class Snippet: Decodable {
     
 }
 
-class Thumbnail: Decodable {
+class Thumbnail: Decodable { // channelと共有しているので注意。
     
     let medium: ThumbnailInfo
     let high: ThumbnailInfo
@@ -29,5 +32,4 @@ class ThumbnailInfo: Decodable { // mediumとhigh
     let url: String
     let width: Int?
     let height: Int?
-    
 }

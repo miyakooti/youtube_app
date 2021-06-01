@@ -19,17 +19,23 @@ class VideoListCell: UICollectionViewCell {
     var videoItem: Item? {
         didSet{
             guard let url = URL(string: videoItem?.snippet.thumbnails.medium.url ?? "") else { return }
-                do {
-                    let data = try Data(contentsOf: url)
-                    thumbnailImageView.image = UIImage(data: data)
-                } catch {
-                    print("データからUIImageに変換できませんでした", error)
-                }
+            guard let channelUrl = URL(string: videoItem?.channel?.items[0].snippet.thumbnails.medium.url ?? "") else { return }
+            do {
+                let data = try Data(contentsOf: url)
+                thumbnailImageView.image = UIImage(data: data)
+                let channelData = try Data(contentsOf: channelUrl)
+                channelImageView.image = UIImage(data: channelData)
 
+            } catch {
+                print("データからUIImageに変換できませんでした", error)
+            }
+            
             titleLabel.text = videoItem?.snippet.title
             descriptionLabel.text = videoItem?.snippet.description
         }
     }
+    
+
     
     
     @IBOutlet private weak var channelImageView: UIImageView!
