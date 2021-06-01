@@ -20,6 +20,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         videoListCollectionView.backgroundColor = .lightGray
+        
         videoListCollectionView.delegate = self
         videoListCollectionView.dataSource = self
         
