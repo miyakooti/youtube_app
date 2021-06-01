@@ -30,11 +30,81 @@ class ViewController: UIViewController {
     }
     
     private func fetchYoutubeSearchInfo() {
-        // ここからが本番
-        let urlString = "https://www.googleapis.com/youtube/v3/search?q=apexlegends&key=\(Sensitive.apiKey)&part=snippet"
+//        // ここからが本番
+//        let urlString = "https://www.googleapis.com/youtube/v3/search?q=apexlegends&key=\(Sensitive.apiKey)&part=snippet"
+////        print(urlString)
+//
+//        let request = AF.request(urlString)
+//        request.responseJSON { [self] (response) in
+//
+//            do {
+//                guard let data = response.data else { return }
+//                let decoder = JSONDecoder()
+//                let video = try decoder.decode(Video.self, from: data) //モデルに格納できるんだ、、、すげー、、、
+//                print("video:", video.items.count)
+//                self.videoItems = video.items
+//
+//                // search→channerで、チャンネルの情報を取得
+//
+//                let id = self.videoItems[0].snippet.channelId
+//                fetchYoutubeChannelInfo(id: id)
+//
+//                self.videoListCollectionView.reloadData()
+//            } catch {
+//                print("searchでデコードに失敗", error)
+//            }
+//        }
+    }
+
+    private func fetchYoutubeChannelInfo(id: String) {
+        let path = "search"
+        let params = ["q": "imperialHal"]
+        apiRequest(path: path, params: params) {
+            
+        }
+//        // ここからが本番
+//        let urlString = "https://www.googleapis.com/youtube/v3/channels?key=\(Sensitive.apiKey)&part=snippet&id=\(id)"
 //        print(urlString)
+//
+//        let request = AF.request(urlString)
+//        request.responseJSON { (response) in
+//
+//            do {
+//                guard let data = response.data else { return }
+//                let decoder = JSONDecoder()
+//                let channel = try decoder.decode(Channel.self, from: data)
+//
+//                self.videoItems.forEach { (item) in
+//                    item.channel = channel
+//                }
+//                // search→channerで、チャンネルの情報を取得
+//                self.videoListCollectionView.reloadData()
+//            } catch {
+//                print("channelでデコードに失敗", error)
+//            }
+//        }
+    }
+    
+    // completionはコールバック。
+    private func apiRequest(path: String, params: [String: Any], completion: @escaping () -> Void) {
+        let baseURL = "https://www.googleapis.com/youtube/v3/"
+        let path = path
+        let url = baseURL + path + "?" // ?はパラメータ始まる合図？
         
-        let request = AF.request(urlString)
+        var params = params
+        
+        params["key"] = Sensitive.apiKey
+        params["part"] = "snippet"
+        
+//        let params = [
+//            "key": Sensitive.apiKey,
+//            "part": "snippet"
+//            "id": ""
+//        ]
+        
+//        let request = AF.request(urlString)
+        let request = AF.request(url, method: HTTPMethod.get, parameters: params) // alamofire神やんけ
+        
         request.responseJSON { [self] (response) in
             
             do {
@@ -44,6 +114,8 @@ class ViewController: UIViewController {
                 print("video:", video.items.count)
                 self.videoItems = video.items
                 
+                completion()
+                
                 // search→channerで、チャンネルの情報を取得
                 
                 let id = self.videoItems[0].snippet.channelId
@@ -52,30 +124,6 @@ class ViewController: UIViewController {
                 self.videoListCollectionView.reloadData()
             } catch {
                 print("searchでデコードに失敗", error)
-            }
-        }
-    }
-
-    private func fetchYoutubeChannelInfo(id: String) {
-        // ここからが本番
-        let urlString = "https://www.googleapis.com/youtube/v3/channels?key=\(Sensitive.apiKey)&part=snippet&id=\(id)"
-        print(urlString)
-        
-        let request = AF.request(urlString)
-        request.responseJSON { (response) in
-            
-            do {
-                guard let data = response.data else { return }
-                let decoder = JSONDecoder()
-                let channel = try decoder.decode(Channel.self, from: data)
-                
-                self.videoItems.forEach { (item) in
-                    item.channel = channel
-                }
-                // search→channerで、チャンネルの情報を取得
-                self.videoListCollectionView.reloadData()
-            } catch {
-                print("channelでデコードに失敗", error)
             }
         }
     }
