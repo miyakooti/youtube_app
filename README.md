@@ -44,6 +44,8 @@ pod install
 - jsonをデコードしてインスタンス化するとき、多分他のモデルのやつ再利用してもOK。正直見づらくなりそうなので、排他的に定義したい部分ではある。
 - try do catchにおいて、tryが②個あってもOK
 - forEach初めて実践で使った
+- ジェネリクス
+- [nuke - powerful loading image](https://github.com/kean/Nuke)
 
 
 
