@@ -23,35 +23,27 @@ class ApiRequest {
     
     // completionはコールバック。
     // じぇねりくす
-    func apiRequest<T: Decodable>(path: PathType, params: [String: Any], type: T.Type ,completion: @escaping (T) -> Void) {
-       
-        // urlつくる
-        let path = path.rawValue
-        let url = baseURL + path + "?" // ?はパラメータ始まる合図？
-        var params = params
-        
-        params["key"] = Sensitive.apiKey
-        params["part"] = "snippet"
-    
-        print(url)
-        print(params)
-        
-        let request = AF.request(url, method: .get, parameters: params) // alamofire神やんけ　勝手にパラメータをurlに組み込んでくれる
-        
-        request.responseJSON { (response) in
-            debugPrint(request)
+    func apiRequest<T: Decodable>(path: PathType, params: [String: Any], type: T.Type, completion: @escaping (T) -> Void) {
+            let path = path.rawValue
+            let url = baseURL + path + "?"
             
-            do {
-                guard let data = response.data else { return }
-                let decoder = JSONDecoder()
-                let value = try decoder.decode(T.self, from: data)
-
-                completion(value)
-                
-            } catch {
-                print("searchでデコードに失敗", error)
+            var params = params
+            params["key"] = Sensitive.apiKey
+            params["part"] = "snippet"
+            
+            let request = AF.request(url, method: .get, parameters: params)
+            
+            request.responseJSON { (response) in
+                do {
+                    guard let data = response.data else { return }
+                    let decode = JSONDecoder()
+                    let value = try decode.decode(T.self, from: data)
+                    
+                    completion(value)
+                } catch {
+                    print(T.self)
+                    print("変換に失敗しました。: ", error)
+                }
             }
         }
- 
-    }
 }

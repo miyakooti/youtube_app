@@ -30,36 +30,32 @@ class ViewController: UIViewController {
     }
     
     private func fetchYoutubeSearchInfo() {
-        let path = "search"
-        let params = ["q": "imperialHal"]
+        let params = ["q": "imperialhal"]
         
         // typeはジェネリクスのやつ。decodableに準拠していればなんでもOKということ。
         
-        ApiRequest.shared.apiRequest(path: .search , params: params, type: Video.self) { (video) in
+        ApiRequest.shared.apiRequest(path: .search, params: params, type: Video.self) { (video) in
             print(video)
             self.videoItems = video.items
-            self.videoListCollectionView.reloadData()
+            let id = self.videoItems[0].snippet.channelId
+            self.fetchYoutubeChannelInfo(id: id)
+            
         }
-
-
     }
 
     private func fetchYoutubeChannelInfo(id: String) {
-        let path = "channels"
-        let params = [
-            "id": id
-        ]
-        
-        ApiRequest.shared.apiRequest(path: .channels, params: params, type: Channel.self) { (channel) in
-            self.videoItems.forEach { (item) in
-                item.channel = channel
+            let params = [
+                "id": id
+            ]
+            
+            ApiRequest.shared.apiRequest(path: .channels, params: params, type: Channel.self) { (channel) in
+                self.videoItems.forEach { (item) in
+                    item.channel = channel
+                }
+                
+                self.videoListCollectionView.reloadData()
             }
-            self.videoListCollectionView.reloadData()
         }
-        
-        
-        
-    }
 
     
 
