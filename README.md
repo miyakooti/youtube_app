@@ -34,6 +34,7 @@ pod install
 - AFは天才
 - try do catchを初めて実践で使えた
 - 任意のブレイクポイントで止めると、変数などの状態を右下のボタンで見ることができる
+- debugPrintちょっとだけ便利
 - 
 
 # 学んだこと(git)
@@ -46,6 +47,7 @@ pod install
 - forEach初めて実践で使った
 - ジェネリクス
 - [nuke - powerful loading image](https://github.com/kean/Nuke)
+- 軽くだけどコールバック
 
 
 
