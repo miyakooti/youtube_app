@@ -57,7 +57,8 @@ pod install
 - nuke使わずに最適化
 
 # 参考文献
-[キャッシュ削除](https://qiita.com/fuwamaki/items/3ed021163e50beab7154)
+- [gitのキャッシュ削除](https://qiita.com/fuwamaki/items/3ed021163e50beab7154)
+- [めちゃ面白分かりやすかったジェネリクス](https://kentaro.app/posts/swift-generics)
 
 
 
