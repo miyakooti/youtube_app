@@ -105,23 +105,22 @@ class ViewController: UIViewController {
 //        let request = AF.request(urlString)
         let request = AF.request(url, method: HTTPMethod.get, parameters: params) // alamofire神やんけ
         
-        request.responseJSON { [self] (response) in
+        request.responseJSON { (response) in
             
             do {
                 guard let data = response.data else { return }
                 let decoder = JSONDecoder()
-                let video = try decoder.decode(Video.self, from: data) //モデルに格納できるんだ、、、すげー、、、
-                print("video:", video.items.count)
-                self.videoItems = video.items
+                let channel = try decoder.decode(Channel.self, from: data) //モデルに格納できるんだ、、、すげー、、、
+
                 
                 completion()
                 
                 // search→channerで、チャンネルの情報を取得
                 
-                let id = self.videoItems[0].snippet.channelId
-                fetchYoutubeChannelInfo(id: id)
-    
-                self.videoListCollectionView.reloadData()
+//                let id = self.videoItems[0].snippet.channelId
+//                fetchYoutubeChannelInfo(id: id)
+//
+//                self.videoListCollectionView.reloadData()
             } catch {
                 print("searchでデコードに失敗", error)
             }
