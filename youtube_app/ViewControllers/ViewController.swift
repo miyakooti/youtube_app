@@ -34,11 +34,13 @@ class ViewController: UIViewController {
         let params = ["q": "imperialHal"]
         
         // typeはジェネリクスのやつ。decodableに準拠していればなんでもOKということ。
-        apiRequest(path: path, params: params, type: Video.self) { (video) in
+        
+        ApiRequest.shared.apiRequest(path: .search , params: params, type: Video.self) { (video) in
             print(video)
             self.videoItems = video.items
             self.videoListCollectionView.reloadData()
         }
+
 
     }
 
@@ -48,7 +50,7 @@ class ViewController: UIViewController {
             "id": id
         ]
         
-        apiRequest(path: path, params: params, type: Channel.self) { (channel) in
+        ApiRequest.shared.apiRequest(path: .channels, params: params, type: Channel.self) { (channel) in
             self.videoItems.forEach { (item) in
                 item.channel = channel
             }
@@ -56,43 +58,11 @@ class ViewController: UIViewController {
         }
         
         
+        
     }
 
     
-    // completionはコールバック。
-    // じぇねりくす
-    private func apiRequest<T: Decodable>(path: String, params: [String: Any], type: T.Type ,completion: @escaping (T) -> Void) {
-       
-        // urlつくる
-        let baseURL = "https://www.googleapis.com/youtube/v3/"
-        let path = path
-        let url = baseURL + path + "?" // ?はパラメータ始まる合図？
-        var params = params
-        
-        params["key"] = Sensitive.apiKey
-        params["part"] = "snippet"
-    
-        print(url)
-        print(params)
-        
-        let request = AF.request(url, method: .get, parameters: params) // alamofire神やんけ　勝手にパラメータをurlに組み込んでくれる
-        
-        request.responseJSON { (response) in
-            debugPrint(request)
-            
-            do {
-                guard let data = response.data else { return }
-                let decoder = JSONDecoder()
-                let value = try decoder.decode(T.self, from: data)
 
-                completion(value)
-                
-            } catch {
-                print("searchでデコードに失敗", error)
-            }
-        }
- 
-    }
 
 
 }
