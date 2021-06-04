@@ -35,7 +35,7 @@ pod install
 - try do catchを初めて実践で使えた
 - 任意のブレイクポイントで止めると、変数などの状態を右下のボタンで見ることができる
 - debugPrintちょっとだけ便利
-- 
+- ヘッダはnavigationで作るのが普通だと思ってたけど、普通にビュー置いてもできる
 
 # 学んだこと(git)
 - swiftだけじゃなくて、gitignoreについてかなり調べた。storyboardちょっと動かすだけでも差分出るのでgitignoreは必須だ。。
