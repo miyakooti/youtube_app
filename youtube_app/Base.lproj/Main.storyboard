@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="WQB-Zx-8Dy">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="134" width="414" height="728"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="kSP-Pc-aUc">
                                     <size key="itemSize" width="128" height="128"/>
@@ -37,13 +37,42 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CFb-gk-7fG">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="126"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="YouTube_icon" translatesAutoresizingMaskIntoConstraints="NO" id="mKZ-y8-9CX">
+                                        <rect key="frame" x="10" y="38" width="60" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="QDg-aA-p6h"/>
+                                            <constraint firstAttribute="width" constant="60" id="lPJ-Oa-WOc"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YouTube" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OHm-1p-Cb8">
+                                        <rect key="frame" x="73" y="50" width="88.5" height="26.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                <constraints>
+                                    <constraint firstItem="mKZ-y8-9CX" firstAttribute="leading" secondItem="CFb-gk-7fG" secondAttribute="leading" constant="10" id="Amu-rq-vQS"/>
+                                    <constraint firstItem="OHm-1p-Cb8" firstAttribute="leading" secondItem="mKZ-y8-9CX" secondAttribute="trailing" constant="3" id="bfy-eM-MY4"/>
+                                    <constraint firstItem="OHm-1p-Cb8" firstAttribute="centerY" secondItem="CFb-gk-7fG" secondAttribute="centerY" id="gXT-ff-mVO"/>
+                                    <constraint firstItem="mKZ-y8-9CX" firstAttribute="centerY" secondItem="CFb-gk-7fG" secondAttribute="centerY" id="zkd-5x-E5r"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="WQB-Zx-8Dy" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="1ur-yk-qXW"/>
+                            <constraint firstItem="WQB-Zx-8Dy" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="90" id="1ur-yk-qXW"/>
+                            <constraint firstItem="WQB-Zx-8Dy" firstAttribute="top" secondItem="CFb-gk-7fG" secondAttribute="bottom" constant="8" symbolic="YES" id="9BM-0I-SLs"/>
+                            <constraint firstItem="CFb-gk-7fG" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="TSs-0w-Lsl"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="WQB-Zx-8Dy" secondAttribute="bottom" id="k0K-GY-AIy"/>
+                            <constraint firstItem="CFb-gk-7fG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="mfs-bs-LhB"/>
                             <constraint firstItem="WQB-Zx-8Dy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="oXB-dk-s9O"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="CFb-gk-7fG" secondAttribute="trailing" id="ust-a7-URG"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="WQB-Zx-8Dy" secondAttribute="trailing" id="vaK-5f-3hM"/>
                         </constraints>
                     </view>
@@ -53,12 +82,16 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="97" y="94"/>
+            <point key="canvasLocation" x="95.652173913043484" y="93.75"/>
         </scene>
     </scenes>
     <resources>
+        <image name="YouTube_icon" width="256" height="256"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

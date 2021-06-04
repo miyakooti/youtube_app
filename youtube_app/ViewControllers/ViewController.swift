@@ -34,7 +34,7 @@ class ViewController: UIViewController {
         
         // typeはジェネリクスのやつ。decodableに準拠していればなんでもOKということ。
         
-        ApiRequest.shared.apiRequest(path: .search, params: params, type: Video.self) { (video) in
+        API.shared.apiRequest(path: .search, params: params, type: Video.self) { (video) in
             print(video)
             self.videoItems = video.items
             let id = self.videoItems[0].snippet.channelId
@@ -48,7 +48,7 @@ class ViewController: UIViewController {
                 "id": id
             ]
             
-            ApiRequest.shared.apiRequest(path: .channels, params: params, type: Channel.self) { (channel) in
+            API.shared.apiRequest(path: .channels, params: params, type: Channel.self) { (channel) in
                 self.videoItems.forEach { (item) in
                     item.channel = channel
                 }

@@ -8,14 +8,14 @@
 import Foundation
 import Alamofire
 
-class ApiRequest {
+class API {
     
     enum PathType: String {
         case search
         case channels
     }
     
-    static var shared = ApiRequest() // apiRequestに対してstatiｃ書くだけでなく、こういう書き方もある。
+    static let shared = API() // apiRequestに対してstatiｃ書くだけでなく、こういう書き方もある。
     
     private let baseURL = "https://www.googleapis.com/youtube/v3/"
 
@@ -34,10 +34,12 @@ class ApiRequest {
             let request = AF.request(url, method: .get, parameters: params)
             
             request.responseJSON { (response) in
+                guard let statusCode = response.response?.statusCode else { return }
+                guard statusCode <= 300 else { return }
                 do {
                     guard let data = response.data else { return }
-                    let decode = JSONDecoder()
-                    let value = try decode.decode(T.self, from: data)
+                    let decoder = JSONDecoder()
+                    let value = try decoder.decode(T.self, from: data)
                     
                     completion(value)
                 } catch {
