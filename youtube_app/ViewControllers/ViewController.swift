@@ -8,13 +8,12 @@
 import UIKit
 import Alamofire
 
-class ViewController: UIViewController {
+final class ViewController: UIViewController {
 
-    @IBOutlet weak var videoListCollectionView: UICollectionView!
+    @IBOutlet private weak var videoListCollectionView: UICollectionView!
         
     private var videoItems = [Item]()
     
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,9 +56,6 @@ class ViewController: UIViewController {
             }
         }
 
-    
-
-
 
 }
 
@@ -77,7 +73,6 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         cell.videoItem = videoItems[indexPath.row]
         return cell
     }
-    
     
 }
 

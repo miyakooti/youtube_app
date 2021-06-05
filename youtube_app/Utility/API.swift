@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-class API {
+final class API {
     
     enum PathType: String {
         case search
